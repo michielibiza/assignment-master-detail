@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories
+package nl.michiel.feature.repositories.viewmodel
 
 import nl.michiel.domain.github.entities.Repo
 

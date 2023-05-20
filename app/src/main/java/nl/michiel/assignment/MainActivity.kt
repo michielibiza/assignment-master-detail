@@ -8,8 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import nl.michiel.design.theme.AssignmentTheme
-import nl.michiel.feature.repositories.RepoListScreen
-import nl.michiel.feature.repositories.RepoListState
+import nl.michiel.feature.repositories.view.RepoListScreen
+import nl.michiel.feature.repositories.viewmodel.RepoListState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
             AssignmentTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    RepoListScreen(RepoListState.Loading)
+                    RepoListScreen()
                 }
             }
         }

@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories
+package nl.michiel.feature.repositories.view
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -6,25 +6,40 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
+import nl.michiel.design.theme.LightBlue1
 import nl.michiel.domain.github.entities.Owner
 import nl.michiel.domain.github.entities.Repo
+import nl.michiel.feature.repositories.R
+import nl.michiel.feature.repositories.viewmodel.RepoListState
+
+@Composable
+fun RepoListScreen() {
+    //TODO get viewModel
+    val state = RepoListState.Success(
+        List(5) { i ->
+            Repo(i, "repo $i", "description $i", i+3, i, emptyList(), Owner(1, "author $i", "https://randomuser.me/api/portraits/thumb/men/$i.jpg"))
+        }
+    )
+    RepoListScreen(state)
+}
 
 @Composable
 fun RepoListScreen(state: RepoListState) {
     when(state) {
-        RepoListState.Loading -> EmptyState(Icons.Filled.Refresh, "Loading...")
-        is RepoListState.Error -> EmptyState(Icons.Filled.Warning, state.message, "Retry", state.onRetry)
+        RepoListState.Loading -> EmptyState(Icons.Filled.Refresh, stringResource(id = R.string.screen_state_loading))
+        is RepoListState.Error -> EmptyState(Icons.Filled.Warning, state.message, stringResource(id = R.string.screen_state_retry), state.onRetry)
         is RepoListState.Success -> if (state.repos.isEmpty()) {
-            EmptyState(Icons.Filled.Search, "No results")
+            EmptyState(Icons.Filled.Search, stringResource(id = R.string.screen_state_empty))
         } else {
             RepoList(state.repos)
         }
@@ -35,15 +50,14 @@ fun RepoListScreen(state: RepoListState) {
 fun RepoList(repos: List<Repo>) {
     LazyColumn {
         items(repos.size, key = { repos[it].id }) { index ->
+            if (index > 0) {
+                Divider(color = LightBlue1)
+            }
             RepoListItem(repos[index])
         }
     }
 }
 
-@Composable
-fun RepoListItem(repo: Repo) {
-    Text(repo.name, style = MaterialTheme.typography.bodyLarge)
-}
 
 @Composable
 fun test(state: RepoListState) {

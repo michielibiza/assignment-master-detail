@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.material)
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
+    implementation(libs.ui.coil)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
