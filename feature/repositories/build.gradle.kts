@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.lifecycle.viewModelCompose)
+    implementation(libs.lifecycle.runtimeCompose)
 
     implementation(project(":domain:github"))
     implementation(project(":core:design"))

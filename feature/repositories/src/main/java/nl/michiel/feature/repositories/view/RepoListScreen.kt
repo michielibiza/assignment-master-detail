@@ -10,26 +10,28 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
+import nl.michiel.domain.github.MockRepoRepository
 import nl.michiel.domain.github.entities.Owner
 import nl.michiel.domain.github.entities.Repo
 import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.viewmodel.RepoListState
+import nl.michiel.feature.repositories.viewmodel.RepoListViewModel
 
 @Composable
 fun RepoListScreen() {
-    //TODO get viewModel
-    val state = RepoListState.Success(
-        List(5) { i ->
-            Repo(i, "repo $i", "description $i", i+3, i, emptyList(), Owner(1, "author $i", "https://randomuser.me/api/portraits/thumb/men/$i.jpg"))
-        }
-    )
+    //TODO inject viewModel
+    val viewModel = remember { RepoListViewModel(MockRepoRepository()) }
+    val state by viewModel.state.collectAsStateWithLifecycle()
     RepoListScreen(state)
 }
 

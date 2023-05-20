@@ -5,4 +5,8 @@ import nl.michiel.domain.github.entities.Repo
 
 interface RepoRepository {
     fun getRepos(): Flow<List<Repo>>
+
+    fun getRepo(id: Int): Flow<Repo>
+
+    fun sync()
 }
