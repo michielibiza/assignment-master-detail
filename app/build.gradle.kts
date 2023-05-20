@@ -57,7 +57,9 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+
     implementation(project(":feature:repositories"))
+    implementation(project(":core:design"))
 
     testImplementation(libs.junit)
 
