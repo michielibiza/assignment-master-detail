@@ -1,4 +1,4 @@
-package nl.michiel.assignment.ui.theme
+package nl.michiel.design.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
