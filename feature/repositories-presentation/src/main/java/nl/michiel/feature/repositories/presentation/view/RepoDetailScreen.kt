@@ -126,7 +126,7 @@ fun EventIcon(type: String) {
         "PushEvent" -> R.drawable.ic_repo_push_24
         "CreateEvent" -> R.drawable.ic_upload_24
         "WatchEvent" -> R.drawable.ic_star_16
-        "IssuesEvent" -> R.drawable.ic_comment_24
+        "IssuesEvent" -> R.drawable.ic_issue_opened_16
         "IssueCommentEvent" -> R.drawable.ic_comment_24
         "ForkEvent" -> R.drawable.ic_repo_forked_16
         else -> R.drawable.ic_github_16
