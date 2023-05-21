@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment</string>
+    <string name="screen_list_title">Repositories</string>
+    <string name="screen_detail_title">Details</string>
 </resources>
