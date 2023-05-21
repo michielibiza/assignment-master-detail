@@ -7,5 +7,5 @@ data class Repo(
     val stargazersCount: Int,
     val forksCount: Int,
     val topics: List<String>,
-    val owner: Owner,
+    val owner: Person,
 )

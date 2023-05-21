@@ -3,18 +3,34 @@ package nl.michiel.domain.github
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onStart
-import nl.michiel.domain.github.entities.Owner
+import nl.michiel.domain.github.entities.Event
+import nl.michiel.domain.github.entities.Person
 import nl.michiel.domain.github.entities.Repo
 
 class MockRepoRepository: RepoRepository {
-    private val data = List(12) { i ->
-        val o = i % 3
-        Repo(i, "repo $i", "description $i", i+3, i, emptyList(), Owner(o, "author $o", "https://randomuser.me/api/portraits/thumb/men/$o.jpg"))
+    private fun person(id: Int) = Person(id, "author $id", "https://randomuser.me/api/portraits/thumb/men/$id.jpg")
+
+    val repoData = List(12) { i ->
+        Repo(i, "repo $i", "description $i", i+3, i, emptyList(), person(i % 3))
     }
 
-    override fun getRepos() = flowOf(data).onStart { delay(500) }
+    val eventData = List(15) { i ->
+        val type = when(i) {
+            in 0..4 -> "PushEvent"
+            in 4..6 -> "WatchEvent"
+            in 6..8 -> "IssueCommentEvent"
+            in 8..10 -> "IssuesEvent"
+            in 10..13 -> "ForkEvent"
+            else -> "CreateEvent"
+        }
+        Event(i, type, person(i % 3), repoData[i % repoData.size], "2020-01-01")
+    }
 
-    override fun getRepo(id: Int) = flowOf(data[id % data.size])
+    override fun getRepos() = flowOf(repoData).onStart { delay(500) }
+
+    override fun getRepo(id: Int) = flowOf(repoData[id % repoData.size])
+
+    override fun getEvents(id: Int) = flowOf(eventData)
 
     override fun sync() {}
 }

@@ -21,7 +21,7 @@ import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
 import nl.michiel.domain.github.MockRepoRepository
-import nl.michiel.domain.github.entities.Owner
+import nl.michiel.domain.github.entities.Person
 import nl.michiel.domain.github.entities.Repo
 import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.viewmodel.RepoListState
@@ -85,7 +85,7 @@ fun RepoListScreenPreviewEmpty() {
 @Preview
 @Composable
 fun RepoListScreenPreviewList() {
-    val owner = Owner(1, "login", "avatarUrl")
+    val owner = Person(1, "login", "avatarUrl")
     val data = listOf(
         Repo(1, "repo1", "description1", 1, 1, emptyList(), owner),
         Repo(2, "repo2", "description2", 2, 2, emptyList(), owner),

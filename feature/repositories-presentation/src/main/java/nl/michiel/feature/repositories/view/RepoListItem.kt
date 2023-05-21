@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nl.michiel.design.components.Bubble
 import nl.michiel.design.theme.AssignmentTheme
-import nl.michiel.domain.github.entities.Owner
+import nl.michiel.domain.github.entities.Person
 import nl.michiel.domain.github.entities.Repo
 import nl.michiel.feature.repositories.R
 
@@ -56,7 +56,7 @@ fun RepoListItemPreview() {
                     9,
                     1,
                     listOf(),
-                    Owner(1, "JakeWharton", "https://avatars.githubusercontent.com/u/66577?v=4")
+                    Person(1, "JakeWharton", "https://avatars.githubusercontent.com/u/66577?v=4")
                 )
             )
         }
