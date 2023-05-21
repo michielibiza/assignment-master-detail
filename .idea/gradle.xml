@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/design" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/repositories-data" />
             <option value="$PROJECT_DIR$/feature/repositories-domain" />
             <option value="$PROJECT_DIR$/feature/repositories-presentation" />
           </set>

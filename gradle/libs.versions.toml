@@ -14,6 +14,7 @@ org-jetbrains-kotlin-jvm = "1.8.10"
 kotlin-coroutines = "1.7.1"
 coil = "2.2.2"
 koin = "3.3.3"
+retrofit = "2.9.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -41,6 +42,9 @@ timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" 
 koin = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version = "3.4.2" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofitmoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.11.0" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -65,6 +65,7 @@ dependencies {
     implementation(project(":feature:repositories-presentation"))
     implementation(project(":core:design"))
     implementation(project(":feature:repositories-domain"))
+    implementation(project(":feature:repositories-data"))
 
     testImplementation(libs.junit)
 
