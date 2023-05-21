@@ -8,10 +8,10 @@ import nl.michiel.feature.repositories.domain.entities.Person
 import nl.michiel.feature.repositories.domain.entities.Repo
 
 class MockRepoRepository: RepoRepository {
-    private fun person(id: Int) = Person(id, "author $id", "https://randomuser.me/api/portraits/thumb/men/$id.jpg")
+    private fun person(id: Long) = Person(id, "author $id", "https://randomuser.me/api/portraits/thumb/men/$id.jpg")
 
     val repoData = List(12) { i ->
-        Repo(i, "repo $i", "description $i", i+3, i, emptyList(), person(i % 3))
+        Repo(i.toLong(), "repo $i", "description $i", i+3, i, emptyList(), person(i % 3L))
     }
 
     val eventData = List(15) { i ->
@@ -23,14 +23,14 @@ class MockRepoRepository: RepoRepository {
             in 10..13 -> "ForkEvent"
             else -> "CreateEvent"
         }
-        Event(i, type, person(i % 3), repoData[i % repoData.size], "2020-01-01")
+        Event(i.toLong(), type, person(i % 3L), "2020-01-01")
     }
 
     override fun getRepos() = flowOf(repoData).onStart { delay(500) }
 
-    override fun getRepo(id: Int) = flowOf(repoData[id % repoData.size])
+    override fun getRepo(id: Long) = flowOf(repoData[id.toInt() % repoData.size])
 
-    override fun getEvents(id: Int) = flowOf(eventData)
+    override fun getEvents(id: Long) = flowOf(eventData)
 
-    override fun sync() {}
+    override suspend fun sync() {}
 }

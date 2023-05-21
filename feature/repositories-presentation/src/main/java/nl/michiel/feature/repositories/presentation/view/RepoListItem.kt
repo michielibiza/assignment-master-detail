@@ -37,7 +37,7 @@ fun RepoListItem(repo: Repo, onClick: (() -> Unit)? = null) {
         }
         Text(repo.description ?: "", maxLines = 1 , overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodyMedium)
         Spacer(modifier = Modifier.height(4.dp))
-        Text(repo.owner.login, style = MaterialTheme.typography.bodySmall)
+        Text(repo.owner.name, style = MaterialTheme.typography.bodySmall)
     }
 }
 

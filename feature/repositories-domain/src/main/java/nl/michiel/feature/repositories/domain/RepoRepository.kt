@@ -7,9 +7,9 @@ import nl.michiel.feature.repositories.domain.entities.Repo
 interface RepoRepository {
     fun getRepos(): Flow<List<Repo>>
 
-    fun getRepo(id: Int): Flow<Repo>
+    fun getRepo(id: Long): Flow<Repo>
 
-    fun getEvents(id: Int): Flow<List<Event>>
+    fun getEvents(id: Long): Flow<List<Event>>
 
-    fun sync()
+    suspend fun sync()
 }

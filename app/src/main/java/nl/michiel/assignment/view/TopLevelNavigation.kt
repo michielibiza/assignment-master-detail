@@ -36,9 +36,9 @@ object Routes {
     const val LIST = "repoList"
     const val DETAIL = "$DETAIL_BASE/{$DETAIL_ARG_NAME}"
 
-    val detailArgs = listOf(navArgument(DETAIL_ARG_NAME) { type = NavType.IntType })
+    val detailArgs = listOf(navArgument(DETAIL_ARG_NAME) { type = NavType.LongType })
 
-    fun detail(id: Int) = "$DETAIL_BASE/$id"
+    fun detail(id: Long) = "$DETAIL_BASE/$id"
 }
 
 enum class Screen(
@@ -79,7 +79,7 @@ fun TopLevelNavigation() {
                         RepoListScreen(onRepoClick = { id -> navController.navigate(Routes.detail(id)) })
                     }
                     composable(Routes.DETAIL, arguments = Routes.detailArgs) { backStackEntry ->
-                        val id = backStackEntry.arguments?.getInt("id") ?: throw IllegalStateException("Missing id")
+                        val id = backStackEntry.arguments?.getLong("id") ?: throw IllegalStateException("Missing id")
                         RepoDetailScreen(id)
                     }
                 }

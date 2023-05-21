@@ -29,14 +29,14 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun RepoListScreen(
     viewModel: RepoListViewModel = koinViewModel(),
-    onRepoClick: ((Int) -> Unit)? = null
+    onRepoClick: ((Long) -> Unit)? = null
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     RepoListScreen(state, onRepoClick)
 }
 
 @Composable
-fun RepoListScreen(state: RepoListState, onRepoClick: ((Int) -> Unit)? = null) {
+fun RepoListScreen(state: RepoListState, onRepoClick: ((Long) -> Unit)? = null) {
     when(state) {
         RepoListState.Loading -> EmptyState(Icons.Filled.Refresh, stringResource(id = R.string.screen_state_loading))
         is RepoListState.Error -> EmptyState(Icons.Filled.Warning, state.message, stringResource(id = R.string.screen_state_retry), state.onRetry)
@@ -49,7 +49,7 @@ fun RepoListScreen(state: RepoListState, onRepoClick: ((Int) -> Unit)? = null) {
 }
 
 @Composable
-fun RepoList(repos: List<Repo>, onRepoClick: ((Int) -> Unit)?) {
+fun RepoList(repos: List<Repo>, onRepoClick: ((Long) -> Unit)?) {
     LazyColumn {
         items(repos.size, key = { repos[it].id }) { index ->
             if (index > 0) {

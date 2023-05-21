@@ -39,16 +39,14 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RepoDetailScreen(
-    id: Int,
+    id: Long,
     viewModel: RepoDetailViewModel = koinViewModel()
 ) {
     val repo by viewModel.getRepo(id).collectAsState(initial = null)
     val events by viewModel.getEvents(id).collectAsState(initial = emptyList())
-    if (repo == null) {
-        EmptyState(icon = Icons.Filled.Refresh, title = "Loading...")
-    } else {
-        RepoDetailScreen(repo!!, events)
-    }
+    repo?.let { repo ->
+        RepoDetailScreen(repo, events)
+    } ?: EmptyState(Icons.Filled.Refresh, stringResource(id = R.string.screen_state_loading))
 }
 
 @Composable
@@ -94,7 +92,7 @@ private fun RepoDetails(repo: Repo) {
                     .clip(MaterialTheme.shapes.large)
             )
             Spacer(Modifier.width(8.dp))
-            Text(repo.owner.login, style = MaterialTheme.typography.bodyMedium)
+            Text(repo.owner.name, style = MaterialTheme.typography.bodyMedium)
         }
         Spacer(Modifier.height(16.dp))
     }
@@ -109,7 +107,7 @@ fun EventItem(event: Event) {
         Spacer(Modifier.width(8.dp))
         Text(event.type, style = MaterialTheme.typography.titleSmall)
         Spacer(Modifier.weight(1f))
-        Text(event.actor.login, style = MaterialTheme.typography.bodyMedium)
+        Text(event.actor.name, style = MaterialTheme.typography.bodyMedium)
         Spacer(Modifier.width(8.dp))
         AsyncImage(
             event.actor.avatarUrl, "avatar",

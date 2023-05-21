@@ -6,7 +6,7 @@ import nl.michiel.feature.repositories.domain.RepoRepository
 class RepoDetailViewModel(
     private val repository: RepoRepository
 ): ViewModel() {
-    fun getRepo(id: Int) = repository.getRepo(id)
+    fun getRepo(id: Long) = repository.getRepo(id)
 
-    fun getEvents(id: Int) = repository.getEvents(id)
+    fun getEvents(id: Long) = repository.getEvents(id)
 }

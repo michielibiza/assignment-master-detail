@@ -1,7 +1,7 @@
 package nl.michiel.feature.repositories.domain.entities
 
 data class Repo(
-    val id: Int,
+    val id: Long,
     val name: String,
     val description: String?,
     val stargazersCount: Int,
