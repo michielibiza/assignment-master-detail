@@ -1,11 +1,11 @@
-package nl.michiel.domain.github
+package nl.michiel.feature.repositories.domain
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onStart
-import nl.michiel.domain.github.entities.Event
-import nl.michiel.domain.github.entities.Person
-import nl.michiel.domain.github.entities.Repo
+import nl.michiel.feature.repositories.domain.entities.Event
+import nl.michiel.feature.repositories.domain.entities.Person
+import nl.michiel.feature.repositories.domain.entities.Repo
 
 class MockRepoRepository: RepoRepository {
     private fun person(id: Int) = Person(id, "author $id", "https://randomuser.me/api/portraits/thumb/men/$id.jpg")

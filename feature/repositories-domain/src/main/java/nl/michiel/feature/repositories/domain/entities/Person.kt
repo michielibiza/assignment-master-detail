@@ -1,4 +1,4 @@
-package nl.michiel.domain.github.entities
+package nl.michiel.feature.repositories.domain.entities
 
 data class Person(
     val id: Int,

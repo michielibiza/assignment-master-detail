@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories.view
+package nl.michiel.feature.repositories.presentation.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,10 +31,10 @@ import nl.michiel.design.components.Bubble
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
-import nl.michiel.domain.github.MockRepoRepository
-import nl.michiel.domain.github.entities.Event
-import nl.michiel.domain.github.entities.Repo
-import nl.michiel.feature.repositories.viewmodel.RepoDetailViewModel
+import nl.michiel.feature.repositories.domain.MockRepoRepository
+import nl.michiel.feature.repositories.domain.entities.Event
+import nl.michiel.feature.repositories.domain.entities.Repo
+import nl.michiel.feature.repositories.presentation.viewmodel.RepoDetailViewModel
 import nl.michiel.feature.repositories.R
 
 @Composable

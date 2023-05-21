@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories.view
+package nl.michiel.feature.repositories.presentation.view
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,12 +20,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
-import nl.michiel.domain.github.MockRepoRepository
-import nl.michiel.domain.github.entities.Person
-import nl.michiel.domain.github.entities.Repo
+import nl.michiel.feature.repositories.domain.MockRepoRepository
+import nl.michiel.feature.repositories.domain.entities.Person
+import nl.michiel.feature.repositories.domain.entities.Repo
 import nl.michiel.feature.repositories.R
-import nl.michiel.feature.repositories.viewmodel.RepoListState
-import nl.michiel.feature.repositories.viewmodel.RepoListViewModel
+import nl.michiel.feature.repositories.presentation.viewmodel.RepoListState
+import nl.michiel.feature.repositories.presentation.viewmodel.RepoListViewModel
 
 @Composable
 fun RepoListScreen(onRepoClick: ((Int) -> Unit)? = null) {

@@ -1,6 +1,6 @@
-package nl.michiel.feature.repositories.viewmodel
+package nl.michiel.feature.repositories.presentation.viewmodel
 
-import nl.michiel.domain.github.RepoRepository
+import nl.michiel.feature.repositories.domain.RepoRepository
 
 class RepoDetailViewModel(
     private val repository: RepoRepository

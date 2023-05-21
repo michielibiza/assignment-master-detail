@@ -13,11 +13,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -27,10 +25,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import nl.michiel.assignment.R
 import nl.michiel.design.theme.AssignmentTheme
-import nl.michiel.design.theme.DarkBlue
-import nl.michiel.design.theme.White
-import nl.michiel.feature.repositories.view.RepoDetailScreen
-import nl.michiel.feature.repositories.view.RepoListScreen
+import nl.michiel.feature.repositories.presentation.view.RepoDetailScreen
+import nl.michiel.feature.repositories.presentation.view.RepoListScreen
 import timber.log.Timber
 
 object Routes {

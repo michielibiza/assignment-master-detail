@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories.viewmodel
+package nl.michiel.feature.repositories.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
-import nl.michiel.domain.github.RepoRepository
+import nl.michiel.feature.repositories.domain.RepoRepository
 
 class RepoListViewModel(
     private val repository: RepoRepository

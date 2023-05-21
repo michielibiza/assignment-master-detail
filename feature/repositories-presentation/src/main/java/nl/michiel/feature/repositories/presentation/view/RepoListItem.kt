@@ -1,4 +1,4 @@
-package nl.michiel.feature.repositories.view
+package nl.michiel.feature.repositories.presentation.view
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nl.michiel.design.components.Bubble
 import nl.michiel.design.theme.AssignmentTheme
-import nl.michiel.domain.github.entities.Person
-import nl.michiel.domain.github.entities.Repo
+import nl.michiel.feature.repositories.domain.entities.Person
+import nl.michiel.feature.repositories.domain.entities.Repo
 import nl.michiel.feature.repositories.R
 
 @Composable

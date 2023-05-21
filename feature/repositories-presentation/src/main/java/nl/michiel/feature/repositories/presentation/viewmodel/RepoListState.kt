@@ -1,6 +1,6 @@
-package nl.michiel.feature.repositories.viewmodel
+package nl.michiel.feature.repositories.presentation.viewmodel
 
-import nl.michiel.domain.github.entities.Repo
+import nl.michiel.feature.repositories.domain.entities.Repo
 
 sealed class RepoListState {
     object Loading : RepoListState()
