@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,17 +19,18 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
-import nl.michiel.feature.repositories.domain.MockRepoRepository
+import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.domain.entities.Person
 import nl.michiel.feature.repositories.domain.entities.Repo
-import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.presentation.viewmodel.RepoListState
 import nl.michiel.feature.repositories.presentation.viewmodel.RepoListViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RepoListScreen(onRepoClick: ((Int) -> Unit)? = null) {
-    //TODO inject viewModel
-    val viewModel = remember { RepoListViewModel(MockRepoRepository()) }
+fun RepoListScreen(
+    viewModel: RepoListViewModel = koinViewModel(),
+    onRepoClick: ((Int) -> Unit)? = null
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     RepoListScreen(state, onRepoClick)
 }

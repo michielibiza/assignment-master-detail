@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.lifecycle.viewModelCompose)
     implementation(libs.lifecycle.runtimeCompose)
+    implementation(libs.koin)
+    implementation(libs.koin.compose)
 
     implementation(project(":feature:repositories-domain"))
     implementation(project(":core:design"))

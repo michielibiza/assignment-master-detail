@@ -59,9 +59,12 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.timber)
+    implementation(libs.koin)
+    implementation(libs.koin.android)
 
     implementation(project(":feature:repositories-presentation"))
     implementation(project(":core:design"))
+    implementation(project(":feature:repositories-domain"))
 
     testImplementation(libs.junit)
 

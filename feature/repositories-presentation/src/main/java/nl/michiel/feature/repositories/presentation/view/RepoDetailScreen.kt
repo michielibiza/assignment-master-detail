@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,16 +30,18 @@ import nl.michiel.design.components.Bubble
 import nl.michiel.design.components.EmptyState
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
+import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.domain.MockRepoRepository
 import nl.michiel.feature.repositories.domain.entities.Event
 import nl.michiel.feature.repositories.domain.entities.Repo
 import nl.michiel.feature.repositories.presentation.viewmodel.RepoDetailViewModel
-import nl.michiel.feature.repositories.R
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RepoDetailScreen(id: Int) {
-    // TODO inject viewmodel
-    val viewModel = remember { RepoDetailViewModel(MockRepoRepository()) }
+fun RepoDetailScreen(
+    id: Int,
+    viewModel: RepoDetailViewModel = koinViewModel()
+) {
     val repo by viewModel.getRepo(id).collectAsState(initial = null)
     val events by viewModel.getEvents(id).collectAsState(initial = emptyList())
     if (repo == null) {
