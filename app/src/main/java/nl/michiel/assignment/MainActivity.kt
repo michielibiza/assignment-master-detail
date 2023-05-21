@@ -3,24 +3,17 @@ package nl.michiel.assignment
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
-import nl.michiel.design.theme.AssignmentTheme
-import nl.michiel.feature.repositories.view.RepoListScreen
-import nl.michiel.feature.repositories.viewmodel.RepoListState
+import nl.michiel.assignment.view.TopLevelNavigation
+import timber.log.Timber
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.plant(Timber.DebugTree())
+
         setContent {
-            AssignmentTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    RepoListScreen()
-                }
-            }
+            TopLevelNavigation()
         }
     }
 }

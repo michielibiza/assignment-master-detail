@@ -28,34 +28,34 @@ import nl.michiel.feature.repositories.viewmodel.RepoListState
 import nl.michiel.feature.repositories.viewmodel.RepoListViewModel
 
 @Composable
-fun RepoListScreen() {
+fun RepoListScreen(onRepoClick: ((Int) -> Unit)? = null) {
     //TODO inject viewModel
     val viewModel = remember { RepoListViewModel(MockRepoRepository()) }
     val state by viewModel.state.collectAsStateWithLifecycle()
-    RepoListScreen(state)
+    RepoListScreen(state, onRepoClick)
 }
 
 @Composable
-fun RepoListScreen(state: RepoListState) {
+fun RepoListScreen(state: RepoListState, onRepoClick: ((Int) -> Unit)? = null) {
     when(state) {
         RepoListState.Loading -> EmptyState(Icons.Filled.Refresh, stringResource(id = R.string.screen_state_loading))
         is RepoListState.Error -> EmptyState(Icons.Filled.Warning, state.message, stringResource(id = R.string.screen_state_retry), state.onRetry)
         is RepoListState.Success -> if (state.repos.isEmpty()) {
             EmptyState(Icons.Filled.Search, stringResource(id = R.string.screen_state_empty))
         } else {
-            RepoList(state.repos)
+            RepoList(state.repos, onRepoClick)
         }
     }
 }
 
 @Composable
-fun RepoList(repos: List<Repo>) {
+fun RepoList(repos: List<Repo>, onRepoClick: ((Int) -> Unit)?) {
     LazyColumn {
         items(repos.size, key = { repos[it].id }) { index ->
             if (index > 0) {
                 Divider(color = LightBlue1)
             }
-            RepoListItem(repos[index])
+            RepoListItem(repos[index], onClick = { onRepoClick?.invoke(repos[index].id) })
         }
     }
 }

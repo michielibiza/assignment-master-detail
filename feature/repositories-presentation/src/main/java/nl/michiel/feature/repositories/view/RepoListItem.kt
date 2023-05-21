@@ -1,5 +1,6 @@
 package nl.michiel.feature.repositories.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,8 +24,12 @@ import nl.michiel.domain.github.entities.Repo
 import nl.michiel.feature.repositories.R
 
 @Composable
-fun RepoListItem(repo: Repo) {
-    Column(Modifier.padding(16.dp)) {
+fun RepoListItem(repo: Repo, onClick: (() -> Unit)? = null) {
+    Column(
+        Modifier
+            .clickable { onClick?.invoke() }
+            .padding(16.dp)
+    ) {
         Row {
             Text(repo.name, style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.weight(1f))
