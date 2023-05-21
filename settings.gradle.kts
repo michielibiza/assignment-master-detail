@@ -16,5 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "Assignment"
 include(":app")
 include(":feature:repositories")
-include(":domain:github")
+include(":feature:repositories-domain")
 include(":core:design")

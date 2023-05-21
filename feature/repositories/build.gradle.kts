@@ -49,8 +49,8 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.lifecycle.viewModelCompose)
     implementation(libs.lifecycle.runtimeCompose)
+    implementation(project(":feature:repositories-domain"))
 
-    implementation(project(":domain:github"))
     implementation(project(":core:design"))
 
     testImplementation(libs.junit)

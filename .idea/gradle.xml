@@ -12,10 +12,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/design" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/domain/github" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/repositories" />
+            <option value="$PROJECT_DIR$/feature/repositories-domain" />
           </set>
         </option>
       </GradleProjectSettings>
