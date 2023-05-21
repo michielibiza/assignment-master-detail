@@ -33,7 +33,7 @@ fun RepoListItem(repo: Repo, onClick: (() -> Unit)? = null) {
         Row {
             Text(repo.name, style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.weight(1f))
-            Bubble(Icons.Filled.Star, repo.stargazersCount.toString())
+            Bubble(R.drawable.ic_star_16, repo.stargazersCount.toString())
             Spacer(modifier = Modifier.width(8.dp))
             Bubble(R.drawable.ic_repo_forked_16, repo.forksCount.toString())
         }

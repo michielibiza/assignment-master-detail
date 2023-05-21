@@ -3,4 +3,5 @@
     <string name="screen_state_loading">Loading…</string>
     <string name="screen_state_empty">No repositories found</string>
     <string name="screen_state_retry">retry</string>
+    <string name="details_history">History</string>
 </resources>
