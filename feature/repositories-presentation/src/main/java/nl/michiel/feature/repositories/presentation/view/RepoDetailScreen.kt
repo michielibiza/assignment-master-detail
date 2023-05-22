@@ -146,9 +146,11 @@ private fun RepoDetails(repo: Repo) {
         FlowRow {
             Pad { Bubble(Icons.Filled.Star, repo.stargazersCount.toString()) }
             Pad { Bubble(R.drawable.ic_repo_forked_16, repo.forksCount.toString()) }
-            repo.topics.forEach { topic ->
-                Pad { Bubble(topic) }
-            }
+            repo.topics
+                .filter { it.isNotBlank() }
+                .forEach { topic ->
+                    Pad { Bubble(topic) }
+                }
         }
     }
 }
