@@ -10,7 +10,7 @@ interface RepoDao {
     @Query("SELECT * FROM repos WHERE id = :id")
     fun getRepo(id: Long): Flow<RepoEntity>
 
-    @Query("SELECT * FROM repos")
+    @Query("SELECT * FROM repos ORDER BY name ASC")
     fun getRepos(): Flow<List<RepoEntity>>
 
     @Upsert
