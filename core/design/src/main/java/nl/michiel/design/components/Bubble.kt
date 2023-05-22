@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nl.michiel.design.theme.AssignmentTheme
+import nl.michiel.design.theme.Blue
 
 @Composable
 fun Bubble(icon: ImageVector, text: String) {
@@ -43,6 +44,17 @@ fun Bubble(icon: Painter, text: String) {
     }
 }
 
+@Composable
+fun Bubble(text: String) {
+    Row(
+        Modifier
+            .clip(MaterialTheme.shapes.large)
+            .background(color = Blue)
+            .padding(8.dp, 4.dp)) {
+        Text(text, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
+    }
+}
+
 @Preview
 @Composable
 fun BubblePreview() {
@@ -56,5 +68,13 @@ fun BubblePreview() {
 fun BubblePreviewAsset() {
     AssignmentTheme {
         Bubble(icon = androidx.core.R.drawable.ic_call_answer, text = "1")
+    }
+}
+
+@Preview
+@Composable
+fun TextBubblePreview() {
+    AssignmentTheme {
+        Bubble(text = "topic")
     }
 }

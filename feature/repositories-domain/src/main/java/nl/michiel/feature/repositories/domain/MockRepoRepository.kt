@@ -10,8 +10,9 @@ import nl.michiel.feature.repositories.domain.entities.Repo
 class MockRepoRepository: RepoRepository {
     private fun person(id: Long) = Person(id, "author $id", "https://randomuser.me/api/portraits/thumb/men/$id.jpg")
 
+    val topics = List(9) { i -> "topic $i" }
     val repoData = List(12) { i ->
-        Repo(i.toLong(), "repo $i", "description $i", i+3, i, emptyList(), person(i % 3L))
+        Repo(i.toLong(), "repo $i", "description $i", i+3, i, topics, person(i % 3L))
     }
 
     val eventData = List(15) { i ->
