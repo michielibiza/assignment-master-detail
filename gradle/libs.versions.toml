@@ -49,6 +49,8 @@ loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-intercept
 room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.5" }
+testCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -51,4 +51,6 @@ dependencies {
     implementation(project(":feature:repositories-domain"))
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.testCoroutines)
 }
