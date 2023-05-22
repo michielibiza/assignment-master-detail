@@ -88,7 +88,7 @@ fun RepoListScreenPreviewList() {
     val owner = Person(1, "login", "avatarUrl")
     val data = listOf(
         Repo(1, "repo1", "description1", 1, 1, emptyList(), owner),
-        Repo(2, "repo2", "description2", 2, 2, emptyList(), owner),
+        Repo(2, "repo2".repeat(4), "description2", 222, 222, emptyList(), owner),
     )
     test(RepoListState.Success(data))
 }

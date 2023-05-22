@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.kotlin.coroutines)
     implementation(libs.room)
     implementation(libs.roomKtx)
+    implementation(libs.timber)
 
     annotationProcessor(libs.roomCompiler)
     ksp(libs.roomCompiler)

@@ -29,8 +29,14 @@ fun RepoListItem(repo: Repo, onClick: (() -> Unit)? = null) {
             .padding(16.dp)
     ) {
         Row {
-            Text(repo.name, style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                repo.name,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.weight(1f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Spacer(modifier = Modifier.width(8.dp))
             Bubble(R.drawable.ic_star_16, repo.stargazersCount.toString())
             Spacer(modifier = Modifier.width(8.dp))
             Bubble(R.drawable.ic_repo_forked_16, repo.forksCount.toString())
