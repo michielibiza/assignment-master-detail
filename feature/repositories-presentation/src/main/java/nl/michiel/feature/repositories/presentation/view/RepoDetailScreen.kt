@@ -100,8 +100,9 @@ fun LazyListScope.eventsList(eventsState: EventsState) {
 
 @Composable
 fun EventsLoading() {
-    Row(Modifier.padding(16.dp)) {
-        CircularProgressIndicator()
+    Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        CircularProgressIndicator(Modifier.size(24.dp))
+        Spacer(Modifier.width(8.dp))
         Text(stringResource(id = R.string.details_history_loading))
     }
 }
