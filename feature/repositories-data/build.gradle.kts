@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinKsp)
 }
 
 android {
@@ -22,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -40,6 +41,11 @@ dependencies {
     implementation(libs.loggingInterceptor)
     implementation(libs.koin)
     implementation(libs.kotlin.coroutines)
+    implementation(libs.room)
+    implementation(libs.roomKtx)
+
+    annotationProcessor(libs.roomCompiler)
+    ksp(libs.roomCompiler)
 
     implementation(project(":feature:repositories-domain"))
 
