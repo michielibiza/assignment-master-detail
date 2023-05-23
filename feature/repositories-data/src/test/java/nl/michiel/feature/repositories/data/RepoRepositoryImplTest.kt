@@ -26,9 +26,10 @@ class RepoRepositoryImplTest {
 
     @Before
     fun setUp() {
-        coEvery { service.getRepos("JakeWharton") } returns reposJakeWharton
-        coEvery { service.getRepos("infinum") } returns reposInfinum
-        coEvery { service.getEvents(any(), any()) } returns events
+        coEvery { service.getRepos(any(), 2) } returns emptyList()
+        coEvery { service.getRepos("JakeWharton", 1) } returns reposJakeWharton
+        coEvery { service.getRepos("infinum", 1) } returns reposInfinum
+        coEvery { service.getEvents(any(), any(), any(), any()) } returns events
 
         coEvery { repoDao.upsertRepos(any()) } returns Unit
         every { repoDao.getRepo(any()) } returns flowOf(RepoEntity.fromRepo(reposJakeWharton.first()))
@@ -40,7 +41,7 @@ class RepoRepositoryImplTest {
 
         repoRepository.getEvents(1L).collect()
 
-        coVerify { service.getEvents("abs.io", "JakeWharton") }
+        coVerify { service.getEvents("abs.io", "JakeWharton", any(), any()) }
     }
 
     @Test

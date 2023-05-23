@@ -35,9 +35,19 @@ class RepoRepositoryImpl(
         override suspend fun sync() {
             // TODO we should store the last synced time and only update if some amount of time has passed
             FOLLOWED_USERS.forEach { user ->
-                githubService.getRepos(user)
-                    .map { RepoEntity.fromRepo(it) }
-                    .let { repos -> repoDao.upsertRepos(repos) }
+                var page = 1
+                var hasMore = true
+                while (hasMore) {
+                    githubService.getRepos(user, page)
+                        .also { hasMore = it.isNotEmpty() }
+                        .map { RepoEntity.fromRepo(it) }
+                        .let { repos ->
+                            if (repos.isNotEmpty()) {
+                                repoDao.upsertRepos(repos)
+                            }
+                        }
+                    page++
+                }
             }
         }
 
