@@ -17,9 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nl.michiel.design.components.Bubble
 import nl.michiel.design.theme.AssignmentTheme
+import nl.michiel.feature.repositories.R
 import nl.michiel.feature.repositories.domain.entities.Person
 import nl.michiel.feature.repositories.domain.entities.Repo
-import nl.michiel.feature.repositories.R
 
 @Composable
 fun RepoListItem(repo: Repo, onClick: (() -> Unit)? = null) {
