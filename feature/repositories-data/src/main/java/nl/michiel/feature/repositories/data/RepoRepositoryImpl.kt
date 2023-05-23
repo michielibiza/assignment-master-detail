@@ -28,7 +28,7 @@ class RepoRepositoryImpl(
         @OptIn(ExperimentalCoroutinesApi::class)
         override fun getEvents(id: Long): Flow<List<Event>> =
             getRepo(id).mapLatest { repo ->
-                githubService.getEvents(repo.name, repo.owner.name)
+                githubService.getEvents(repo.name, repo.owner.name, pageSize = 100)
                     .map { it.toEvent() }
             }
 

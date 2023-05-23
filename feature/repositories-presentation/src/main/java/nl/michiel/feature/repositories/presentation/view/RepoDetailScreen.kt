@@ -130,8 +130,10 @@ private fun RepoDetails(repo: Repo) {
         Modifier.padding(16.dp, 24.dp)
     ) {
         Text(repo.name, style = MaterialTheme.typography.titleLarge)
-        Spacer(Modifier.height(8.dp))
-        Text(repo.description ?: "", style = MaterialTheme.typography.bodyMedium)
+        if (!repo.description.isNullOrBlank()) {
+            Spacer(Modifier.height(8.dp))
+            Text(repo.description!!, style = MaterialTheme.typography.bodyMedium)
+        }
         Spacer(Modifier.height(16.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             AsyncImage(

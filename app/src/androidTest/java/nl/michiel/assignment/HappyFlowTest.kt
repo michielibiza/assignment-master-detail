@@ -36,7 +36,7 @@ class HappyFlowTest {
         onNodeWithText("Details").assertExists()
         onNodeWithText("JakeWharton").assertExists()
 
-        waitUntilAtLeastOneExists(hasText("History"))
+        waitUntilAtLeastOneExists(hasText("Activity in last 90 days"))
 
         onAllNodesWithText("ForkEvent").onFirst().assertExists()
 
