@@ -8,4 +8,5 @@ data class Repo(
     val forksCount: Int,
     val topics: List<String>,
     val owner: Person,
+    val url: String,
 )

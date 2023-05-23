@@ -85,10 +85,10 @@ fun RepoListScreenPreviewEmpty() {
 @Preview
 @Composable
 fun RepoListScreenPreviewList() {
-    val owner = Person(1, "login", "avatarUrl")
+    val owner = Person(1, "login", "avatarUrl", "url")
     val data = listOf(
-        Repo(1, "repo1", "description1", 1, 1, emptyList(), owner),
-        Repo(2, "repo2".repeat(4), "description2", 222, 222, emptyList(), owner),
+        Repo(1, "repo1", "description1", 1, 1, emptyList(), owner, "url"),
+        Repo(2, "repo2".repeat(4), "description2", 222, 222, emptyList(), owner, "url"),
     )
     test(RepoListState.Success(data))
 }

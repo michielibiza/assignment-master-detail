@@ -60,7 +60,8 @@ fun RepoListItemPreview() {
                     9,
                     1,
                     listOf(),
-                    Person(1, "JakeWharton", "https://avatars.githubusercontent.com/u/66577?v=4")
+                    Person(1, "JakeWharton", "https://avatars.githubusercontent.com/u/66577?v=4", "https://api.github.com/users/JakeWharton"),
+                    "https://github.com/JakeWharton/abs.io"
                 )
             )
         }

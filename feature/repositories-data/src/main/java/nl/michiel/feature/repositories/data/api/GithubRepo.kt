@@ -20,6 +20,7 @@ data class GithubRepo(
     val default_branch: String,
     val score: Double,
     val topics: List<String>,
+    val html_url: String,
 ) {
     fun toRepo() = Repo(
         id,
@@ -29,5 +30,6 @@ data class GithubRepo(
         forks_count,
         topics,
         owner.toPerson(),
+        html_url,
     )
 }

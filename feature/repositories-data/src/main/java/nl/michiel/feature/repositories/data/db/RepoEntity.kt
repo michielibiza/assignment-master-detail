@@ -15,10 +15,12 @@ data class RepoEntity(
     var stargazersCount: Int = 0,
     var forksCount: Int = 0,
     var topics: String,
+    var url: String,
     // TODO we can make a full relational DB, but for now we just keep it simple
     var ownerId: Long,
     var ownerName: String,
     var ownerAvatarUrl: String,
+    var ownerUrl: String,
 ) {
     fun toRepo() = Repo(
         id = id,
@@ -31,7 +33,9 @@ data class RepoEntity(
             id = ownerId,
             name = ownerName,
             avatarUrl = ownerAvatarUrl,
-        )
+            url = ownerUrl,
+        ),
+        url = url,
     )
 
     companion object {
@@ -43,9 +47,11 @@ data class RepoEntity(
                 stargazersCount = repo.stargazers_count,
                 forksCount = repo.forks_count,
                 topics = repo.topics.joinToString(","),
+                url = repo.html_url,
                 ownerId = repo.owner.id,
                 ownerName = repo.owner.login,
                 ownerAvatarUrl = repo.owner.avatar_url,
+                ownerUrl = repo.owner.html_url ?: "",
             )
     }
 }

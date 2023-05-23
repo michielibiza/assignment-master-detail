@@ -18,10 +18,12 @@ val repositoriesDataModule = module {
     // Room DB
     single<RepoDatabase> {
         Room.databaseBuilder(
-            get(),
-            RepoDatabase::class.java,
-            "repos-database",
-        ).build()
+                get(),
+                RepoDatabase::class.java,
+                "repos-database",
+            )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     // Room DAO

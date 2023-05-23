@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import nl.michiel.design.components.Bubble
 import nl.michiel.design.components.EmptyState
+import nl.michiel.design.components.UrlText
 import nl.michiel.design.theme.AssignmentTheme
 import nl.michiel.design.theme.LightBlue1
 import nl.michiel.feature.repositories.R
@@ -134,6 +135,8 @@ private fun RepoDetails(repo: Repo) {
             Spacer(Modifier.height(8.dp))
             Text(repo.description!!, style = MaterialTheme.typography.bodyMedium)
         }
+        Spacer(Modifier.height(2.dp))
+        UrlText(repo.url)
         Spacer(Modifier.height(16.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             AsyncImage(
@@ -143,9 +146,12 @@ private fun RepoDetails(repo: Repo) {
                     .clip(MaterialTheme.shapes.large)
             )
             Spacer(Modifier.width(8.dp))
-            Text(repo.owner.name, style = MaterialTheme.typography.bodyMedium)
+            Column {
+                Text(repo.owner.name, style = MaterialTheme.typography.bodyMedium)
+                UrlText(repo.owner.url)
+            }
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(16.dp))
         FlowRow {
             Pad { Bubble(Icons.Filled.Star, repo.stargazersCount.toString()) }
             Pad { Bubble(R.drawable.ic_repo_forked_16, repo.forksCount.toString()) }
