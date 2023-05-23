@@ -29,7 +29,7 @@ class HappyFlowTest {
     fun happyFlow(): Unit = with(composeTestRule) {
         setContent { TopLevelNavigation() }
 
-        waitUntilAtLeastOneExists(hasText("ActionBarSherlock"))
+        waitUntilAtLeastOneExists(hasText("ActionBarSherlock"), 10_000) // give some time in case the DB is empty
 
         onNodeWithText("ActionBarSherlock").performClick()
 
