@@ -13,43 +13,43 @@ import nl.michiel.feature.repositories.domain.entities.Event
 class RepoRepositoryImpl(
     private val repoDao: RepoDao,
     private val githubService: GithubService,
-): RepoRepository {
+) : RepoRepository {
 
-        override fun getRepos() =
-            repoDao.getRepos()
-                .map { repos ->
-                    repos.map { it.toRepo() }
-                }
-
-        override fun getRepo(id: Long) =
-            repoDao.getRepo(id)
-                .map { it.toRepo() }
-
-        @OptIn(ExperimentalCoroutinesApi::class)
-        override fun getEvents(id: Long): Flow<List<Event>> =
-            getRepo(id).mapLatest { repo ->
-                githubService.getEvents(repo.name, repo.owner.name, pageSize = 100)
-                    .map { it.toEvent() }
+    override fun getRepos() =
+        repoDao.getRepos()
+            .map { repos ->
+                repos.map { it.toRepo() }
             }
 
-        override suspend fun sync() {
-            // TODO we should store the last synced time and only update if some amount of time has passed
-            FOLLOWED_USERS.forEach { user ->
-                var page = 1
-                var hasMore = true
-                while (hasMore) {
-                    githubService.getRepos(user, page)
-                        .also { hasMore = it.isNotEmpty() }
-                        .map { RepoEntity.fromRepo(it) }
-                        .let { repos ->
-                            if (repos.isNotEmpty()) {
-                                repoDao.upsertRepos(repos)
-                            }
+    override fun getRepo(id: Long) =
+        repoDao.getRepo(id)
+            .map { it.toRepo() }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun getEvents(id: Long): Flow<List<Event>> =
+        getRepo(id).mapLatest { repo ->
+            githubService.getEvents(repo.name, repo.owner.name, pageSize = 100)
+                .map { it.toEvent() }
+        }
+
+    override suspend fun sync() {
+        // TODO we should store the last synced time and only update if some amount of time has passed
+        FOLLOWED_USERS.forEach { user ->
+            var page = 1
+            var hasMore = true
+            while (hasMore) {
+                githubService.getRepos(user, page)
+                    .also { hasMore = it.isNotEmpty() }
+                    .map { RepoEntity.fromRepo(it) }
+                    .let { repos ->
+                        if (repos.isNotEmpty()) {
+                            repoDao.upsertRepos(repos)
                         }
-                    page++
-                }
+                    }
+                page++
             }
         }
+    }
 
     companion object {
         // TODO this data should come from a storage module that is edited by a different feature
